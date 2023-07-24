@@ -1,13 +1,13 @@
-package com.alquimiasoft.com;
+package alquimiasoft.minegocio.testclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestClientAlquimiasoftApplication {
+public class TestClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestClientAlquimiasoftApplication.class, args);
+		SpringApplication.run(TestClientApplication.class, args);
 	}
 
 }

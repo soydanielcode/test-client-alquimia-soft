@@ -51,7 +51,7 @@ public class ClientServiceImpl implements ClientService {
         branchAddress.setCity(clientDTO.getCity());
         branchAddress.setAddress(clientDTO.getAddress());
         branchAddress.setClient(client);
-        branchAddress = branchAddressRepository.save(branchAddress);
+        branchAddressRepository.save(branchAddress);
         return clientMapper.toDto(client);
     }
 

@@ -57,6 +57,7 @@ public class ClientServiceImpl implements ClientService {
         client.setProvince(clientOld.getProvince());
         client.setCity(clientOld.getCity());
         client.setAddress(clientOld.getAddress());
+        client.setStatusType(StatusType.CREATED);
         client = clientRepository.save(client);
         return clientMapper.toDto(client);
     }

@@ -7,8 +7,6 @@ public class BranchAddressDTO {
     private String province;
     private String city;
     private String address;
-    private Long clientId;
-
     public BranchAddressDTO() {
     }
 
@@ -44,11 +42,4 @@ public class BranchAddressDTO {
         this.address = address;
     }
 
-    public Long getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(Long clientId) {
-        this.clientId = clientId;
-    }
 }

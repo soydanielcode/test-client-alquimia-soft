@@ -1,13 +1,8 @@
 package alquimiasoft.minegocio.testclient.service.dto;
 
-import alquimiasoft.minegocio.testclient.domain.BranchAddress;
 import alquimiasoft.minegocio.testclient.domain.enumeration.IdentificationType;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 public class ClientDTO implements Serializable {
     private Long id;
@@ -20,6 +15,10 @@ public class ClientDTO implements Serializable {
     private String city;
     private String address;
     public ClientDTO(){}
+
+    public ClientDTO(String identificationNumber) {
+        this.identificationNumber = identificationNumber;
+    }
 
     public Long getId() {
         return id;

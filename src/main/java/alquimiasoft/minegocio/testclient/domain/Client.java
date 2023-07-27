@@ -18,22 +18,17 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
     @Column(name = "identification_type", length = 50)
     private IdentificationType identificationType;
 
     //    @Pattern(regexp = Constans.CI_REGEX)
-    @NotNull
 //    @Size(min = 10, max = 13)
     @Column(name = "identification_number", length = 50)
     private String identificationNumber;
-    @NotNull
     @Column(name = "names", length = 200)
     private String names;
-    @NotNull
     @Column(name = "email")
     private String email;
-    @NotNull
     @Column(name = "cellphone")
     private String cellphone;
     @Column(name = "province")
@@ -42,6 +37,7 @@ public class Client implements Serializable {
     private String city;
     @Column(name = "address")
     private String address;
+
     public Client() {
     }
     public Client(IdentificationType identificationType, String identificationNumber, String names, String email, String cellphone, String province, String city, String address) {
@@ -50,9 +46,6 @@ public class Client implements Serializable {
         this.names = names;
         this.email = email;
         this.cellphone = cellphone;
-        this.province = province;
-        this.city = city;
-        this.address = address;
     }
 
     public Long getId() {

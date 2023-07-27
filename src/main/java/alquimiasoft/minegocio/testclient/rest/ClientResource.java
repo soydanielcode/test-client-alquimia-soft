@@ -17,7 +17,7 @@ import java.util.Objects;
 public class ClientResource {
     private final ClientService clientService;
     private final ClientRepository clientRepository;
-    private static final String ENTITY_NAME = "Client";
+    private static final String ENTITY_NAME = "CLIENT";
 
     public ClientResource(ClientService clientService, ClientRepository clientRepository) {
         this.clientService = clientService;
@@ -25,38 +25,57 @@ public class ClientResource {
     }
 
     @PostMapping("/client")
-    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTO) throws URISyntaxException {
-        ClientDTO result = clientService.save(clientDTO);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+    public ResponseEntity<ClientDTO> createClient(@RequestBody ClientDTO clientDTO) {
+        try {
+            ClientDTO result = clientService.save(clientDTO);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new BadRequestAlertException(e.getMessage(), ENTITY_NAME, "Error");
+        }
     }
 
     @PutMapping("client/{id}")
-    public ResponseEntity<ClientDTO> updateClient(@PathVariable(value = "id", required = false) final Long id, @RequestBody ClientDTO clientDTO) throws URISyntaxException {
+    public ResponseEntity<ClientDTO> updateClient(@PathVariable(value = "id", required = false) final Long id, @RequestBody ClientDTO clientDTO) {
         if (!clientRepository.existsById(id)) {
-            throw new BadRequestAlertException("Invalid ID.", ENTITY_NAME, "not found");
+            throw new BadRequestAlertException("Invalid ID, that client does not exist.", ENTITY_NAME, "ID Not Exist");
         }
         if (clientDTO.getId() == null) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idnull");
+            throw new BadRequestAlertException("ID null, that client does not exist.", ENTITY_NAME, "ID is null");
         }
         if (!Objects.equals(id, clientDTO.getId())) {
-            throw new BadRequestAlertException("Invalid ID", ENTITY_NAME, "idinvalid");
+            throw new BadRequestAlertException("IDs not equal", ENTITY_NAME, "ID find different to Client Update");
         }
-        ClientDTO result = clientService.update(clientDTO);
-        return new ResponseEntity<>(result, HttpStatus.OK);
+        try {
+            ClientDTO result = clientService.update(clientDTO);
+            return new ResponseEntity<>(result, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new BadRequestAlertException(e.getMessage(), ENTITY_NAME, "Error");
+        }
     }
 
     @DeleteMapping("/client/{id}")
     public ResponseEntity<Void> deleteEquipment(@PathVariable Long id) {
         if (!clientRepository.existsById(id)) {
-            throw new BadRequestAlertException("Invalid ID.", ENTITY_NAME, "not found");
+            throw new BadRequestAlertException("Invalid ID, that client does not exist.", ENTITY_NAME, "not found");
         }
-        clientService.delete(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            clientService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception e) {
+            throw new BadRequestAlertException(e.getMessage(), ENTITY_NAME, "Error");
+        }
     }
 
     @GetMapping("/clients/{findWord}")
     public ResponseEntity<List<ClientDTO>> getAllClientsByFindWord(@PathVariable String findWord) {
-        List<ClientDTO> clientDTOS = clientService.getAllClientsByFindWord(findWord);
-        return new ResponseEntity<>(clientDTOS, HttpStatus.OK);
+        if (findWord == null) {
+            throw new BadRequestAlertException("The find Word is null, that client does not exist.", ENTITY_NAME, "Word is null");
+        }
+        try {
+            List<ClientDTO> clientDTOS = clientService.getAllClientsByFindWord(findWord);
+            return new ResponseEntity<>(clientDTOS, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new BadRequestAlertException(e.getMessage(), ENTITY_NAME, "Error");
+        }
     }
 }

@@ -43,4 +43,13 @@ public class ClientResource {
         ClientDTO result = clientService.update(clientDTO);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
+    @DeleteMapping("/client/{id}")
+    public ResponseEntity<Void> deleteEquipment(@PathVariable Long id) {
+        if(!clientRepository.existsById(id)){
+            throw new BadRequestAlertException("Invalid ID.", ENTITY_NAME, "not found");
+        }
+        clientService.delete(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

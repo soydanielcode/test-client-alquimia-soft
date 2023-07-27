@@ -1,14 +1,10 @@
 package alquimiasoft.minegocio.testclient.domain;
 
 import alquimiasoft.minegocio.testclient.domain.enumeration.IdentificationType;
+import alquimiasoft.minegocio.testclient.domain.enumeration.StatusType;
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
-//import javax.validation.constraints.Size;
-//import org.intellij.lang.annotations.Pattern;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "client")
@@ -20,9 +16,6 @@ public class Client implements Serializable {
     private Long id;
     @Column(name = "identification_type", length = 50)
     private IdentificationType identificationType;
-
-    //    @Pattern(regexp = Constans.CI_REGEX)
-//    @Size(min = 10, max = 13)
     @Column(name = "identification_number", length = 50)
     private String identificationNumber;
     @Column(name = "names", length = 200)
@@ -37,6 +30,9 @@ public class Client implements Serializable {
     private String city;
     @Column(name = "address")
     private String address;
+
+    @Column(name = "status_type")
+    private StatusType statusType;
 
     public Client() {
     }
@@ -120,18 +116,11 @@ public class Client implements Serializable {
         this.address = address;
     }
 
-    @Override
-    public String toString() {
-        return "Client{" +
-                "id=" + id +
-                ", identificationType=" + identificationType +
-                ", identificationNumber='" + identificationNumber + '\'' +
-                ", names='" + names + '\'' +
-                ", email='" + email + '\'' +
-                ", cellphone='" + cellphone + '\'' +
-                ", province='" + province + '\'' +
-                ", city='" + city + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+    public StatusType getStatusType() {
+        return statusType;
+    }
+
+    public void setStatusType(StatusType statusType) {
+        this.statusType = statusType;
     }
 }

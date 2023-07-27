@@ -8,7 +8,6 @@ import java.util.Optional;
 public interface BranchAddressService {
     BranchAddressDTO save(BranchAddressDTO branchAddressDTO);
     BranchAddressDTO update(BranchAddressDTO branchAddressDTO);
-    Optional<BranchAddressDTO> partialUpdate(BranchAddressDTO branchAddressDTO);
     Optional<BranchAddressDTO> findOne(Long id);
     void delete(Long id);
 }

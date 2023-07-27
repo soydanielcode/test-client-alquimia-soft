@@ -2,6 +2,7 @@ package alquimiasoft.minegocio.testclient.service.impl;
 
 import alquimiasoft.minegocio.testclient.domain.BranchAddress;
 import alquimiasoft.minegocio.testclient.domain.Client;
+import alquimiasoft.minegocio.testclient.domain.enumeration.StatusType;
 import alquimiasoft.minegocio.testclient.exception.BadRequestAlertException;
 import alquimiasoft.minegocio.testclient.repository.BranchAddressRepository;
 import alquimiasoft.minegocio.testclient.repository.ClientRepository;
@@ -43,6 +44,7 @@ public class ClientServiceImpl implements ClientService {
             throw new BadRequestAlertException("There is already a person with this identification number.", ENTITY_NAME, "Alquimia Mi negocio");
         }
         Client client = clientMapper.toEntity(clientDTO);
+        client.setStatusType(StatusType.CREATED);
         client = clientRepository.save(client);
         BranchAddress branchAddress = new BranchAddress();
         branchAddress.setProvince(clientDTO.getProvince());
@@ -65,17 +67,13 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Optional<ClientDTO> partialUpdate(ClientDTO clientDTO) {
-        return Optional.empty();
-    }
-
-    @Override
     public Optional<ClientDTO> findOne(Long id) {
         return Optional.empty();
     }
 
     @Override
     public void delete(Long id) {
-
+       Client client = clientRepository.getReferenceById(id);
+       client.setStatusType(StatusType.DELETED);
     }
 }

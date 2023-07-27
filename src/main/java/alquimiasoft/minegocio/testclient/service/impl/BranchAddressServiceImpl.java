@@ -35,11 +35,6 @@ public class BranchAddressServiceImpl implements BranchAddressService {
     }
 
     @Override
-    public Optional<BranchAddressDTO> partialUpdate(BranchAddressDTO branchAddressDTO) {
-        return Optional.empty();
-    }
-
-    @Override
     public Optional<BranchAddressDTO> findOne(Long id) {
         return Optional.empty();
     }

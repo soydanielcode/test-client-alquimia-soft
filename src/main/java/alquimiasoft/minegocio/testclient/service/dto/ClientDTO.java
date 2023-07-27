@@ -16,6 +16,18 @@ public class ClientDTO implements Serializable {
     private String address;
     public ClientDTO(){}
 
+    public ClientDTO(Long id, IdentificationType identificationType, String identificationNumber, String names, String email, String cellphone, String province, String city, String address) {
+        this.id = id;
+        this.identificationType = identificationType;
+        this.identificationNumber = identificationNumber;
+        this.names = names;
+        this.email = email;
+        this.cellphone = cellphone;
+        this.province = province;
+        this.city = city;
+        this.address = address;
+    }
+
     public ClientDTO(String identificationNumber) {
         this.identificationNumber = identificationNumber;
     }

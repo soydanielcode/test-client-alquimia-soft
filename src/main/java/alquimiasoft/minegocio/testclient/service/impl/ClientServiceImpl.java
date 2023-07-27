@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.net.URISyntaxException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -67,8 +68,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public Optional<ClientDTO> findOne(Long id) {
-        return Optional.empty();
+    public List<ClientDTO> getAllClientsByFindWord(String findWord) {
+        return clientRepository.findClientsByIdentificationNumberAndNames(findWord, StatusType.CREATED);
     }
 
     @Override

@@ -16,6 +16,7 @@ public class Client implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(name = "identification_type", length = 50)
     private IdentificationType identificationType;
     @Column(name = "identification_number", length = 50)
@@ -33,6 +34,7 @@ public class Client implements Serializable {
     @Column(name = "address")
     private String address;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "status_type")
     private StatusType statusType;
 

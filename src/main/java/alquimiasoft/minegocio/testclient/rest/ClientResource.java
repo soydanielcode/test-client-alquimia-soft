@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Objects;
 
 @RestController
@@ -51,5 +52,11 @@ public class ClientResource {
         }
         clientService.delete(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/clients/{findWord}")
+    public ResponseEntity<List<ClientDTO>>getAllClientsByFindWord(@PathVariable String findWord){
+        List<ClientDTO>clientDTOS = clientService.getAllClientsByFindWord(findWord);
+        return new ResponseEntity<>(clientDTOS, HttpStatus.OK);
     }
 }

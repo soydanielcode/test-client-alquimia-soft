@@ -54,16 +54,14 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public ClientDTO update(ClientDTO clientDTO) {
-
-//        if (clientRepository.findById(clientDTO.getId()).isEmpty() == false){
-//
-//        }
-
-//        if(clientRepository.existsClientByIdentificationNumber(clientDTO.getIdentificationNumber())){
-//            throw new BadRequestAlertException("There is already a person with this identification number.", ENTITY_NAME, "Alquimia Mi negocio");
-//        }
-    return null;
+    public ClientDTO update(ClientDTO clientDTO) throws URISyntaxException {
+        Client clientOld = clientRepository.getReferenceById(clientDTO.getId());
+        Client client = clientMapper.toEntity(clientDTO);
+        client.setProvince(clientOld.getProvince());
+        client.setCity(clientOld.getCity());
+        client.setAddress(clientOld.getAddress());
+        client = clientRepository.save(client);
+        return clientMapper.toDto(client);
     }
 
     @Override

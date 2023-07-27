@@ -3,7 +3,6 @@ import alquimiasoft.minegocio.testclient.domain.Client;
 import alquimiasoft.minegocio.testclient.service.dto.ClientDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring", uses = { ClientMapper.class })
 public interface ClientMapper {

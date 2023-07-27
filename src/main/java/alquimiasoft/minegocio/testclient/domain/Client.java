@@ -4,11 +4,13 @@ import alquimiasoft.minegocio.testclient.domain.enumeration.IdentificationType;
 import alquimiasoft.minegocio.testclient.domain.enumeration.StatusType;
 import jakarta.persistence.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "client")
 public class Client implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

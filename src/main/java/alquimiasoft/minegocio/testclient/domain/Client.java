@@ -38,13 +38,6 @@ public class Client implements Serializable {
 
     public Client() {
     }
-    public Client(IdentificationType identificationType, String identificationNumber, String names, String email, String cellphone, String province, String city, String address) {
-        this.identificationType = identificationType;
-        this.identificationNumber = identificationNumber;
-        this.names = names;
-        this.email = email;
-        this.cellphone = cellphone;
-    }
 
     public Long getId() {
         return id;

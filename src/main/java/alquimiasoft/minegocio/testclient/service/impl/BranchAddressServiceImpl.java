@@ -1,6 +1,7 @@
 package alquimiasoft.minegocio.testclient.service.impl;
 
 import alquimiasoft.minegocio.testclient.domain.BranchAddress;
+import alquimiasoft.minegocio.testclient.domain.enumeration.StatusType;
 import alquimiasoft.minegocio.testclient.repository.BranchAddressRepository;
 import alquimiasoft.minegocio.testclient.repository.ClientRepository;
 import alquimiasoft.minegocio.testclient.service.BranchAddressService;
@@ -9,6 +10,7 @@ import alquimiasoft.minegocio.testclient.service.mapper.BranchAddressMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,17 +36,7 @@ public class BranchAddressServiceImpl implements BranchAddressService {
     }
 
     @Override
-    public BranchAddressDTO update(BranchAddressDTO branchAddressDTO) {
-        return null;
-    }
-
-    @Override
-    public Optional<BranchAddressDTO> findOne(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public void delete(Long id) {
-
+    public List<BranchAddressDTO> getAllBranchAddressesByClient_Id(Long id) {
+        return branchAddressRepository.findBranchAddressesByClient_Id(id, StatusType.CREATED);
     }
 }

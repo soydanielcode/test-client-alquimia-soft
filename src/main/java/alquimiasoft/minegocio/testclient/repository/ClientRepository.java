@@ -21,10 +21,12 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     );
 
     @Query(
-            "select new alquimiasoft.minegocio.testclient.service.dto.ClientDTO(c.id, c.identificationType, c.identificationNumber, c.names, c.email, c.cellphone, c.province, c.city, c.address)  from Client c where (c.identificationNumber ilike %:findWord% or c.names ilike %:findWord%) and c.statusType = :status"
+            " select new alquimiasoft.minegocio.testclient.service.dto.ClientDTO(c.id, c.identificationType, c.identificationNumber, c.names, c.email, c.cellphone, c.province, c.city, c.address)  " +
+                    "from Client c " +
+                    " where (c.identificationNumber ilike %:findWord% or c.names ilike %:findWord%) and c.statusType = :status "
     )
-    List<ClientDTO>findClientsByIdentificationNumberAndNames(
+    List<ClientDTO> findClientsByIdentificationNumberAndNames(
             @Param("findWord") String findWord,
-            @Param("status")StatusType status
-            );
+            @Param("status") StatusType status
+    );
 }

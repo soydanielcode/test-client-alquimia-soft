@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URISyntaxException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -29,5 +30,10 @@ public class BranchAddressResource {
     public ResponseEntity<BranchAddressDTO> createBranchAddress(@PathVariable(value = "id_client", required = false) final Long id_client, @RequestBody BranchAddressDTO branchAddressDTO) {
         BranchAddressDTO result = branchAddressService.save(branchAddressDTO, id_client);
         return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+    @GetMapping("/branch_address/{id_client}")
+    public ResponseEntity<List<BranchAddressDTO>>getAllBranchAddressByClientId(@PathVariable Long id_client){
+        List<BranchAddressDTO>branchAddressDTOS = branchAddressService.getAllBranchAddressesByClient_Id(id_client);
+        return new ResponseEntity<>(branchAddressDTOS, HttpStatus.OK);
     }
 }

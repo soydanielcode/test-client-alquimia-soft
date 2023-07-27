@@ -10,6 +10,13 @@ public class BranchAddressDTO {
     public BranchAddressDTO() {
     }
 
+    public BranchAddressDTO(Long id, String province, String city, String address) {
+        this.id = id;
+        this.province = province;
+        this.city = city;
+        this.address = address;
+    }
+
     public Long getId() {
         return id;
     }

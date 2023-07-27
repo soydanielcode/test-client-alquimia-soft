@@ -1,7 +1,5 @@
 package alquimiasoft.minegocio.testclient.rest;
 
-import alquimiasoft.minegocio.testclient.repository.BranchAddressRepository;
-import alquimiasoft.minegocio.testclient.repository.ClientRepository;
 import alquimiasoft.minegocio.testclient.service.BranchAddressService;
 import alquimiasoft.minegocio.testclient.service.dto.BranchAddressDTO;
 import org.springframework.http.HttpStatus;

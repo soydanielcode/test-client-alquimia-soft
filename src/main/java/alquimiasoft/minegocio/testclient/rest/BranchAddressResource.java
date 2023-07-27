@@ -13,14 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class BranchAddressResource {
-    private final BranchAddressRepository branchAddressRepository;
     private final BranchAddressService branchAddressService;
-    private final ClientRepository clientRepository;
 
-    public BranchAddressResource(BranchAddressRepository branchAddressRepository, BranchAddressService branchAddressService, ClientRepository clientRepository) {
-        this.branchAddressRepository = branchAddressRepository;
+    public BranchAddressResource(BranchAddressService branchAddressService) {
         this.branchAddressService = branchAddressService;
-        this.clientRepository = clientRepository;
     }
 
     @PostMapping("/branch_address/{id_client}")

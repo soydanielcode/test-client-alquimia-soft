@@ -30,9 +30,6 @@ public class ClientDTO implements Serializable {
         this.address = address;
     }
 
-    public ClientDTO(String identificationNumber) {
-        this.identificationNumber = identificationNumber;
-    }
 
     public Long getId() {
         return id;

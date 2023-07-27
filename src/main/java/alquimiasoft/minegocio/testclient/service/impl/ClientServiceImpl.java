@@ -23,19 +23,15 @@ import java.util.List;
 public class ClientServiceImpl implements ClientService {
     private final ClientMapper clientMapper;
     private final ClientRepository clientRepository;
-    private final BranchAddressMapper branchAddressMapper;
-    private final BranchAddressService branchAddressService;
     private final BranchAddressRepository branchAddressRepository;
     private static final String ENTITY_NAME = "Client";
 
     public ClientServiceImpl(
             ClientMapper clientMapper,
             ClientRepository clientRepository,
-            BranchAddressMapper branchAddressMapper, BranchAddressService branchAddressService, BranchAddressRepository branchAddressRepository) {
+            BranchAddressRepository branchAddressRepository) {
         this.clientMapper = clientMapper;
         this.clientRepository = clientRepository;
-        this.branchAddressMapper = branchAddressMapper;
-        this.branchAddressService = branchAddressService;
         this.branchAddressRepository = branchAddressRepository;
     }
 

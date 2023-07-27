@@ -13,10 +13,10 @@ import alquimiasoft.minegocio.testclient.service.mapper.BranchAddressMapper;
 import alquimiasoft.minegocio.testclient.service.mapper.ClientMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.net.URISyntaxException;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -41,7 +41,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public ClientDTO save(ClientDTO clientDTO) throws URISyntaxException {
-        if(clientRepository.existsClientByIdentificationNumber(clientDTO.getIdentificationNumber())){
+        if (clientRepository.existsClientByIdentificationNumber(clientDTO.getIdentificationNumber())) {
             throw new BadRequestAlertException("There is already a person with this identification number.", ENTITY_NAME, "Alquimia Mi negocio");
         }
         Client client = clientMapper.toEntity(clientDTO);
@@ -74,7 +74,7 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void delete(Long id) {
-       Client client = clientRepository.getReferenceById(id);
-       client.setStatusType(StatusType.DELETED);
+        Client client = clientRepository.getReferenceById(id);
+        client.setStatusType(StatusType.DELETED);
     }
 }

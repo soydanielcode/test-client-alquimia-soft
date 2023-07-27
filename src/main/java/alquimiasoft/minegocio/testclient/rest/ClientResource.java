@@ -32,7 +32,7 @@ public class ClientResource {
 
     @PutMapping("client/{id}")
     public ResponseEntity<ClientDTO> updateClient(@PathVariable(value = "id", required = false) final Long id, @RequestBody ClientDTO clientDTO) throws URISyntaxException {
-        if(!clientRepository.existsById(id)){
+        if (!clientRepository.existsById(id)) {
             throw new BadRequestAlertException("Invalid ID.", ENTITY_NAME, "not found");
         }
         if (clientDTO.getId() == null) {
@@ -47,7 +47,7 @@ public class ClientResource {
 
     @DeleteMapping("/client/{id}")
     public ResponseEntity<Void> deleteEquipment(@PathVariable Long id) {
-        if(!clientRepository.existsById(id)){
+        if (!clientRepository.existsById(id)) {
             throw new BadRequestAlertException("Invalid ID.", ENTITY_NAME, "not found");
         }
         clientService.delete(id);
@@ -55,8 +55,8 @@ public class ClientResource {
     }
 
     @GetMapping("/clients/{findWord}")
-    public ResponseEntity<List<ClientDTO>>getAllClientsByFindWord(@PathVariable String findWord){
-        List<ClientDTO>clientDTOS = clientService.getAllClientsByFindWord(findWord);
+    public ResponseEntity<List<ClientDTO>> getAllClientsByFindWord(@PathVariable String findWord) {
+        List<ClientDTO> clientDTOS = clientService.getAllClientsByFindWord(findWord);
         return new ResponseEntity<>(clientDTOS, HttpStatus.OK);
     }
 }

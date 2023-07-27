@@ -1,7 +1,5 @@
 package alquimiasoft.minegocio.testclient.service.dto;
 
-import jakarta.persistence.Column;
-
 public class BranchAddressDTO {
     private Long id;
     private String province;

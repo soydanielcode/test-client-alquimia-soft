@@ -1,16 +1,13 @@
 package alquimiasoft.minegocio.testclient.rest;
 
-import alquimiasoft.minegocio.testclient.domain.BranchAddress;
 import alquimiasoft.minegocio.testclient.repository.BranchAddressRepository;
 import alquimiasoft.minegocio.testclient.repository.ClientRepository;
 import alquimiasoft.minegocio.testclient.service.BranchAddressService;
 import alquimiasoft.minegocio.testclient.service.dto.BranchAddressDTO;
-import alquimiasoft.minegocio.testclient.service.dto.ClientDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.URISyntaxException;
 import java.util.List;
 
 @RestController
@@ -31,9 +28,10 @@ public class BranchAddressResource {
         BranchAddressDTO result = branchAddressService.save(branchAddressDTO, id_client);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
+
     @GetMapping("/branch_address/{id_client}")
-    public ResponseEntity<List<BranchAddressDTO>>getAllBranchAddressByClientId(@PathVariable Long id_client){
-        List<BranchAddressDTO>branchAddressDTOS = branchAddressService.getAllBranchAddressesByClient_Id(id_client);
+    public ResponseEntity<List<BranchAddressDTO>> getAllBranchAddressByClientId(@PathVariable Long id_client) {
+        List<BranchAddressDTO> branchAddressDTOS = branchAddressService.getAllBranchAddressesByClient_Id(id_client);
         return new ResponseEntity<>(branchAddressDTOS, HttpStatus.OK);
     }
 }

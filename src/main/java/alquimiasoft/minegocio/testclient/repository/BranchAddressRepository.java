@@ -3,7 +3,6 @@ package alquimiasoft.minegocio.testclient.repository;
 import alquimiasoft.minegocio.testclient.domain.BranchAddress;
 import alquimiasoft.minegocio.testclient.domain.enumeration.StatusType;
 import alquimiasoft.minegocio.testclient.service.dto.BranchAddressDTO;
-import alquimiasoft.minegocio.testclient.service.impl.BranchAddressServiceImpl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -18,8 +17,8 @@ public interface BranchAddressRepository extends JpaRepository<BranchAddress, Lo
                     " inner join Client c on ba.client.id = c.id " +
                     " where c.id = :id and c.statusType = :status "
     )
-    List<BranchAddressDTO>findBranchAddressesByClient_Id(
+    List<BranchAddressDTO> findBranchAddressesByClient_Id(
             @Param("id") Long id,
-            @Param("status")StatusType status
-            );
+            @Param("status") StatusType status
+    );
 }
